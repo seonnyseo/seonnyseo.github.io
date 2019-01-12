@@ -18,13 +18,13 @@ As a group project, I practiced sentiment analysis on music streaming services r
 For practicing sentiment analysis, I had to decide which lexicon(sentiment dictionary) should I use for the analysis. R provides lexicons such as ‘Bing’, ‘NRC’, and ‘AFINN’. I chose ‘bing’ for the project. This decision is based on comparisons between manual judgments and lexicon scores. The manual judgement datasets are about 1% of total reviews and were selected randomly. Here is the result of the comparison.
 
 Spotify
-![Imgur](https://imgur.com/Ik7PDMT)
+![Imgur](https://imgur.com/Ik7PDMT.png)
 
 Pandora
-![Imgur](https://imgur.com/0h6tjXA)
+![Imgur](https://imgur.com/0h6tjXA.png)
 
 Amazon music
-![Imgur](https://imgur.com/t1PQfof)
+![Imgur](https://imgur.com/t1PQfof.png)
 
 
 ‘Bing’ determined the highest accuracy compared two lexicons on every service. Somehow, the conclusions on negative reviews were shallow, but we couldn’t find out a solution this time. (I assume this is related to the length of reviews and sarcasm) 
@@ -113,7 +113,6 @@ My purpose is to see a change in trend of sentiment by keywords. Thus, expected 
 3. Create a graph
 
 #### Pre-Process
-
 {% highlight r %}
 pre_process <- function(service)
 {
@@ -155,7 +154,6 @@ So, dataset acquires sentiment score column after pass this function.
 Extract reviews
 
 #### word_data
-
 {% highlight r %}
 word_data <-function(service, start, end, word, sentiment){
 
@@ -196,7 +194,6 @@ word_data <-function(service, start, end, word, sentiment){
 This function does two operations. This function extracts data by service, period, word, and sentiment from pre-processed raw dataset. As I mentioned above, the extracted dataset should includes around 14% of neutral reviews. So, the function handles neutral reviews with estimated probability from resampling results. It splits neutral reviews as positive or negative randomly follow the weights.
 
 #### frequnecy_month
-
 {% highlight r %}
 frequency_month <- function(service, start, end, word, sentiment){
   
@@ -216,7 +213,6 @@ frequency_month <- function(service, start, end, word, sentiment){
  I only want to know frequency of reviews each months. This function counts how many reviews were posted in a certain period by keywords. 
 
 #### word_graph
-
 {% highlight r %}
 word_graph <- function(service, word, start, end){
 
