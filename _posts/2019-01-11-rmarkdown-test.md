@@ -113,6 +113,7 @@ My purpose is to see a change in trend of sentiment by keywords. Thus, expected 
 3. Create a graph
 
 #### Pre-Process
+
 {% highlight r %}
 pre_process <- function(service)
 {
@@ -154,6 +155,7 @@ So, dataset acquires sentiment score column after pass this function.
 Extract reviews
 
 #### word_data
+
 {% highlight r %}
 word_data <-function(service, start, end, word, sentiment){
 
@@ -194,6 +196,7 @@ word_data <-function(service, start, end, word, sentiment){
 This function does two operations. This function extracts data by service, period, word, and sentiment from pre-processed raw dataset. As I mentioned above, the extracted dataset should includes around 14% of neutral reviews. So, the function handles neutral reviews with estimated probability from resampling results. It splits neutral reviews as positive or negative randomly follow the weights.
 
 #### frequnecy_month
+
 {% highlight r %}
 frequency_month <- function(service, start, end, word, sentiment){
   
@@ -213,6 +216,7 @@ frequency_month <- function(service, start, end, word, sentiment){
  I only want to know frequency of reviews each months. This function counts how many reviews were posted in a certain period by keywords. 
 
 #### word_graph
+
 {% highlight r %}
 word_graph <- function(service, word, start, end){
 
