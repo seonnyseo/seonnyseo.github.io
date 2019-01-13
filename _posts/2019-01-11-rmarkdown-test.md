@@ -18,14 +18,14 @@ As a group project, I practiced sentiment analysis on music streaming services r
 For practicing sentiment analysis, I had to decide which lexicon(sentiment dictionary) should I use for the analysis. R provides lexicons such as ‘Bing’, ‘NRC’, and ‘AFINN’. I chose ‘bing’ for the project. This decision is based on comparisons between manual judgments and lexicon scores. The manual judgement datasets are about 1% of total reviews and were selected randomly. Here is the result of the comparison.
 
 Spotify
-![Imgur](https://imgur.com/Ik7PDMT)
+
+![Imgur](https://imgur.com/Ik7PDMT.png)
 
 Pandora
-![Imgur](https://imgur.com/0h6tjXA)
+![Imgur](https://imgur.com/0h6tjXA.png)
 
 Amazon music
-![Imgur](https://imgur.com/t1PQfof)
-
+![Imgur](https://imgur.com/t1PQfof.png)
 
 ‘Bing’ determined the highest accuracy compared two lexicons on every service. Somehow, the conclusions on negative reviews were shallow, but we couldn’t find out a solution this time. (I assume this is related to the length of reviews and sarcasm) 
 
