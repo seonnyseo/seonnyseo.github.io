@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "R Markdown test"
+title:  "Sentiment Analysis on Music Streaming Services Reviews"
 date:   2019-01-11 23:00:40 +0100
-categories: r jekyll
+categories: r sentimet_analysis 
 ---
   
 As a group project, I practiced sentiment analysis on music streaming services reviews. Purpose of the project is to find insights from the reviews, and I focused on disclosing relationships between events of the services and user reactions. It can be software updates, offline events, or increasing membership fee. For checking this out, I wanted to see review trends by a word, period and sentiment. The reviews that I handled for the project are from Pandora, Spotify and Amazon music and the total sum of those is about 39,290 reviews
