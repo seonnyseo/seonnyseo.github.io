@@ -12,5 +12,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_PATH
-  repo: seonnyseo/seonnyseo.github.io
-  target_branch: master
+  on:
+    branch: master
+  target_brach : source
