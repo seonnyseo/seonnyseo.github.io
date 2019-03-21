@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "R Markdown test"
+title:  "Sentiment Analysis on Music Streaming Services Reviews"
 date:   2019-01-11 23:00:40 +0100
-categories: r jekyll
+categories: r sentimet_analysis 
 ---
   
 As a group project, I practiced sentiment analysis on music streaming services reviews. Purpose of the project is to find insights from the reviews, and I focused on disclosing relationships between events of the services and user reactions. It can be software updates, offline events, or increasing membership fee. For checking this out, I wanted to see review trends by a word, period and sentiment. The reviews that I handled for the project are from Pandora, Spotify and Amazon music and the total sum of those is about 39,290 reviews
@@ -18,14 +18,13 @@ As a group project, I practiced sentiment analysis on music streaming services r
 For practicing sentiment analysis, I had to decide which lexicon(sentiment dictionary) should I use for the analysis. R provides lexicons such as ‘Bing’, ‘NRC’, and ‘AFINN’. I chose ‘bing’ for the project. This decision is based on comparisons between manual judgments and lexicon scores. The manual judgement datasets are about 1% of total reviews and were selected randomly. Here is the result of the comparison.
 
 Spotify
-![Imgur](https://imgur.com/Ik7PDMT)
+![Imgur](https://imgur.com/Ik7PDMT.png)
 
 Pandora
-![Imgur](https://imgur.com/0h6tjXA)
+![Imgur](https://imgur.com/0h6tjXA.png)
 
 Amazon music
-![Imgur](https://imgur.com/t1PQfof)
-
+![Imgur](https://imgur.com/t1PQfof.png)
 
 ‘Bing’ determined the highest accuracy compared two lexicons on every service. Somehow, the conclusions on negative reviews were shallow, but we couldn’t find out a solution this time. (I assume this is related to the length of reviews and sarcasm) 
 
