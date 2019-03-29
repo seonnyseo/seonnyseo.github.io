@@ -1,15 +1,13 @@
 ---
 layout: post
-title:  "PCA"
+title:  "PCA (Principal Component Analysis"
 date:   2019-02-05 23:59:00 +0100
 categories: r PCA FactorAnalysis Analysis
 ---
 
-### PCA(Principal Component Anlaysis)
+##Analysis on Grocery price
 
-####Analysis on Grocery price
-
-#####1. Explore Data
+#1. Explore Data
 
 {% highlight r %}
 data <- read.csv("/Users/keonhoseo/Documents/Q2/STAT 630/Week 3/food.csv")
@@ -23,7 +21,7 @@ unscaled_data <- data
 data=scale(data)
 data=as.data.frame(data)
 
-## Step 1 , Explore the data
+# Step 1 , Explore the data
 dim(data)
 var1=var(data$Bread)
 var2=var(data$Hamburger)
@@ -36,7 +34,7 @@ var5=var(data$Tomato)
 This dataset contains grocery price in U.S cities table. It has information about 24 U.S cities and 5 kinds of groceries. So I can consider it is 5 dimensions of data and it is difficult to identify comparable cities. The purpose of conducting PCA here is to explain the cities with a few variables, then we can compare the cities easily.
 
 
-#####2. Define the problem in terms of PCs
+#2. Define the problem in terms of PCs
 
 {% highlight r %}
 sigma <- var(data)
@@ -48,7 +46,7 @@ percentvars=vars/sum(vars)
 
 The data is standardized above and compute covariances, because we want to know how 
 
-#####3. Compute all Eigenvalues/Eigenvectors 
+#3. Compute all Eigenvalues/Eigenvectors 
 
 {% highlight r %}
 eigenvalues=eigen(sigma)$values
@@ -67,7 +65,7 @@ Decompose dataset with Eigenvectors and Eigenvalues. Eigenvectors mean direction
 
 On here, all grocery has a negative relation wiht PC1, and only hamburger and tomato have positive relationship with PC2.
 
-#####4. Check variance estimates of the pcs and all other properties
+#4. Check variance estimates of the pcs and all other properties
 
 {% highlight r %}
 percentvars_pc = eigenvalues / sum(eigenvalues)
@@ -83,7 +81,7 @@ ts.plot(cbind(percentvars,percentvars_pc),col=c("blue","red"),xlab="ith vector",
 Graph a scree plot. Red line shows eigenvalues and the slope is getting slower after first 2 components. We can decide the first two components as variables for PCA.
 
 
-#####5. Check correlation between components
+#5. Check correlation between components
 
 {% highlight r %}
 y1=as.matrix(data)%*%(eigenvectors[,1])
@@ -101,7 +99,7 @@ rho_pc
 
 This is correlations between principal components. Off-diagonal values are converging to 0, we don't have to worry about multicollinearity on the components.
 
-#####6. Regression
+#6. Regression
 
 Let's compare explanatory power for variances of origin variables and Principal components through regression analysis.
 
@@ -124,7 +122,7 @@ summary(lm(dv~data$Hamburger+data$Tomato))
 Let's put Hamberguer and Tomato into regression as input and compare with principal components regression result. Hambugrger and Tomato combination get 0.7652 R-squared score, while the first two principal components scored 0.9259. So, we can say two of the PCA components explain more variances than any of two origin variables.
 
 
-#####7. Draw a plot
+#7. Draw a plot
 
 {% highlight r %}
 plot(y1,y2)
@@ -142,7 +140,7 @@ On PC2(Y-axis), the most important variable on this is apple. Apple has a high n
 Through the PCA plot, it is easy to compare grocery prices in U.S cities and guesses living costs in the cities. 
 
 
-#####8. Unstandardized
+#8. Unstandardized
 
 {% highlight r %}
 data <- read.csv("/Users/keonhoseo/Documents/Q2/STAT 630/Week 3/food.csv")
