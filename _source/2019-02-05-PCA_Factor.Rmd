@@ -1,12 +1,9 @@
 ---
-title: "STAT 630 Assignment 1"
-output:
-  html_document: default
+layout: post
+title:  "PCA & Factor Analysis"
+date:   2019-02-05 23:59:00 +0100
+categories: r PCA FactorAnalysis
 ---
-
-Name: KeonHo Seo
-
-Email: ks3745@drexel.edu
 
 PCA and Factor Analysis
 
