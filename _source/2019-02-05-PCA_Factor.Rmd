@@ -8,7 +8,7 @@ categories: r PCA FactorAnalysis
 PCA and Factor Analysis
 
 
-###PCA(Principal Component Anlaysis)
+### PCA(Principal Component Anlaysis)
 
 
 ####PCA for hearing test result
