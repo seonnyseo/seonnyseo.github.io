@@ -109,15 +109,9 @@ for line in text:
   text_clean.append(p.clean(line))
 ```
 
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 
-
 Ex)
-|   a  | Text |
+
+|      | Text |
 |------|------|
 |Before|@Scribble_Dragon 50 mg Seroquel with my ‘normal’ 60 mg Lovan and 750 mcg Clonazepam.|
 |After |mg Seroquel with my ‘normal’ mg Lovan and mcg Clonazepam.|
@@ -166,6 +160,7 @@ for i in range(0,num_resp):
 ```
 
 Ex)
+
 |      | Text |
 |------|------|
 |Before|SEVEN missed calls? get you're seroquel mg lowered. you're getting ridiculous|
@@ -193,6 +188,7 @@ for i in range(num_resp):
 ```
 
 Ex)
+
 |      | Text |
 |------|------|
 |Before|antipsychot quetiapin sedat olanzapin risperidon aripiprazol lithium augment agent|
@@ -256,8 +252,6 @@ tfidf_df[:10]
 |1     |   0.0  |   0.0   |   0.0  |  0.0 | 0.0 |
 |2     |   0.0  |   0.0   |0.69535 |  0.0 | 0.0 |
 
-|1     |antipsychot seroquel sedat olanzapin risperidon aripiprazol lithium augment agent|
-
 
 
 
@@ -270,7 +264,7 @@ drugTweets_df
 |:--:|:-----------------:|:------------------------------------------------:|:---------------:|:-----:|
 |0   |333644914913079296 | i know for a FACT that alcohol does not deplet...| 2300521710      |   0   |
 |1   |344825926342832128 | mg Seroquel with my ‘normal’ mg Lovan and mcg ...| 179074771       |   0   |
-|2   |344606561873833985  there's a fella on my Facebook who is asking t... | 464202509       |   1   |
+|2   |344606561873833985 | there's a fella on my Facebook who is asking t...| 464202509       |   1   |
 
 
 
@@ -278,11 +272,11 @@ drugTweets_df
 tfidf_df['abused'] = drugTweets_df.abuse
 ```
 
-###4.Modeling
+### 4.Modeling
 
 Data set for modeling is made through text pre-processing and creating a tf-idf matrix. In this part, we will focus on how to make classfication models.
 
-####1.Import classifiers
+#### 1.Import classifiers
 
 Importing classification model packages.
 
@@ -301,7 +295,7 @@ from sklearn.model_selection import train_test_split
 import pandas as pd
 ```
 
-####2.Load DTM File and split as train & test
+#### 2.Load DTM File and split as train & test
 
 Use a tf-idf matrix that we made above as dataset.
 
@@ -347,9 +341,6 @@ We will apply 3 types of resampling and pick the best one.
 2. Random Under Sampling
 3. SMOTE
 
-
-
-
 ```python
 from sklearn.utils import resample
 from collections import Counter
@@ -360,15 +351,17 @@ from imblearn.over_sampling import SMOTE
 
 Oversampling  (X_train_up, y_train_up)
 
-
-
 ```python
 ros = RandomOverSampler(random_state = 123)
 X_train_up, y_train_up = ros.fit_resample(X_train, y_train)
 print(sorted(Counter(y_train_up).items()))
 ```
 
-    [(0, 2029), (1, 2029)]
+
+|Abused|Number of Tweets|
+|:----:|:--------------:|
+|   0  |      2029      |
+|   1  |      2029      |
 
 
 SMOTE (X_train_SMOTE, y_train_SMOTE)
@@ -379,7 +372,11 @@ X_train_SMOTE, y_train_SMOTE = SMOTE().fit_resample(X_train, y_train)
 print(sorted(Counter(y_train_SMOTE).items()))
 ```
 
-    [(0, 2029), (1, 2029)]
+|Abused|Number of Tweets|
+|:----:|:--------------:|
+|   0  |      2029      |
+|   1  |      2029      |
+
 
 
 Undersampling (X_train_under, y_train_under)
@@ -391,7 +388,10 @@ X_train_under, y_train_under = rus.fit_resample(X_train, y_train)
 print(sorted(Counter(y_train_under).items()))
 ```
 
-    [(0, 351), (1, 351)]
+|Abused|Number of Tweets|
+|:----:|:--------------:|
+|   0  |       351      |
+|   1  |       351      |
 
 
 #### 4.Train and evaluate 
