@@ -68,9 +68,8 @@ Tweets ids and twitter user ids are in 'drug_safety_data.txt' file.
 2. The data are stored as json format
 3. Text in below shows how it is constructed 
 
-
-```python
 {% highlight html linenos %}
+```python
 import pandas as pd
 drugTweets = pd.read_csv('drug_safety_data.txt', delimiter = '\t', header = None, names = ['tweet_id', 'twitter_user_id', 'abuse'])
 drugTweets = drugTweets.drop_duplicates()
@@ -79,9 +78,9 @@ txts = []
 for tweet in drugTweets_text:
   txts.append(json.loads(json.dumps(tweet._json)))
 txts[0]
-{% endhighlight %}
-```
 
+```
+{% endhighlight %}
 
 
 
