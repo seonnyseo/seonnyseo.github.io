@@ -44,7 +44,7 @@ table {
   display: table;
   &.bordered > thead > tr,
   &.bordered > tbody > tr {
-    border-bottom: 1px solid $table-border-color;
+    border-bottom: 0.3px solid $table-border-color;
   }
   &.striped > tbody {
     > tr:nth-child(odd) {
@@ -69,7 +69,7 @@ table {
   }
 }
 thead {
-  border-bottom: 1px solid $table-border-color;
+  border-bottom: 0.3px solid $table-border-color;
 }
 td,
 th {
@@ -80,7 +80,7 @@ th {
   border-radius: 2px;
 }
 tfoot {
-  border-top: 1px solid $table-border-color;
+  border-top: 0.3px solid $table-border-color;
 }
 
 // Global transition
