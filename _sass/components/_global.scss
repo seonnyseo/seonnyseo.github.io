@@ -69,18 +69,19 @@ table {
   }
 }
 thead {
-  border-bottom: 0.3px solid $table-border-color;
+  border-bottom: 1px solid $table-border-color;
 }
 td,
 th {
-  padding: 15px 5px;
+  padding: 3px 2px;
   display: table-cell;
   text-align: left;
   vertical-align: middle;
-  border-radius: 2px;
+  border-radius: 1px;
+  border-bottom: 1px solid $table-border-color;
 }
 tfoot {
-  border-top: 0.3px solid $table-border-color;
+  border-top: 1px solid $table-border-color;
 }
 
 // Global transition
