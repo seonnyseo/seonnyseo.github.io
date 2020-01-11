@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Text Classification on Social Media Text"
+date:   2019-08-24 23:59:00 +0100
+categories: Python Twitter API MachineLearning Text Classification
+---
+
 
 ###1.Collecting Tweets through Twitter API
 
