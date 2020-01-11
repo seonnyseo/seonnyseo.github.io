@@ -6,7 +6,7 @@ categories: Python Twitter API MachineLearning Text Classification
 ---
 
 
-###1.Collecting Tweets through Twitter API
+### 1.Collecting Tweets through Twitter API
 
 Using Twitter API, we can collect information tweets includes user information, date, and tweets. For this, install and import Twitter API first.
 
@@ -166,12 +166,12 @@ for line in txts:
   text.append(line['text'])
 ```
 
-###2.Text pre-processing
+### 2.Text pre-processing
 
 Tweets were written in the informal language in most cases, and included reserved words related to Twitter. To improve machine learning models performance, it is required to clean unnecessary text up to teach models clearly. 
 
 
-####1.Remove Twitter reserved word
+#### 1.Remove Twitter reserved word
 
 
 ```python
@@ -222,7 +222,7 @@ tweets_w_text = pd.DataFrame(list(zip(ids, text_clean)), columns = ['tweet_id', 
 drugTweets_df = pd.merge(tweets_w_text, drugTweets, on = 'tweet_id', how = 'inner')
 ```
 
-####2.Stopwords / Lowercase / Stemming
+#### 2.Stopwords / Lowercase / Stemming
 
 Besides removing Twitter words, we can remove stopwords that would not give important information and lowercase every text for avoiding counting same words several times. Also, we decide to apply stemming to reduce inflected words to their word stem.
 
@@ -295,11 +295,11 @@ print("After : {}".format(clean_text[5]))
     After : antipsychot seroquel sedat olanzapin risperidon aripiprazol lithium augment agent
 
 
-###3.Document - Term representation
+### 3.Document - Term representation
 
 In order to classify tweets by machine learning models, we need to create a document-term representation. Numbers in the matrix represent how important a word is to a document in a collection or corpus.
 
-####Term Frequency
+#### 1.Term Frequency
 
 Using by CountVectorizer function, we can tokenize and count the frequency of words in tweets. After it, fit_transform module creats a Document-Term matrix. 
 
@@ -321,7 +321,7 @@ tfVectorizer.get_feature_names()[0:5]
 
 
 
-####Term Frequency - Inverse Document Frequency (Feature Selection)
+#### 2.Term Frequency - Inverse Document Frequency (Feature Selection)
 
 The frequency of words does not tell us how the words important, because some not important words such as 'I', 'the', 'a' would frequently appear than other terms. Term Frequency - Inverse Document Frequency value represents priority by the number of appearance in the document / the number of occurrence in the corpus. 
 
@@ -1841,7 +1841,7 @@ tfidf_df.abused.value_counts()
 
 
 
-####3.Resampling
+#### 3.Resampling
 
 If we train models with imbalanced data, the models will be biased to predict majority class which is not aligned to the purpose of this study. In order to resolve this problem, we executed resamplings to make dataset balanced.
 
@@ -1899,7 +1899,7 @@ print(sorted(Counter(y_train_under).items()))
     [(0, 351), (1, 351)]
 
 
-####4.Train and evaluate 
+#### 4.Train and evaluate 
 
 
 With oversampled data, we will train models, test on those and compare which classification model shows the best performance. 
@@ -2145,11 +2145,11 @@ print_result(models, train_report_SMOTE, test_report_SMOTE)
          
 
 
-###5.Validation
+### 5.Validation
 
 To validate our model, we run cross validation and draw ROC curve.
 
-#### Cross Validation
+#### 1.Cross Validation
 
 Since the data is imbalanced, we adopt stratifiedKFold function that keeps class weights on spliiting data for cross validation. Also, we use f1_scorer to compare models by f1_measure, not Accuracy. 
 
@@ -2275,7 +2275,7 @@ print(report)
     
 
 
-#### ROC curve
+#### 2.ROC curve
 
 We looked at the Area Under the Curve (AUC) on a ROC graph to future compare the model performance. SVM outperforms the other models here as well.
 
