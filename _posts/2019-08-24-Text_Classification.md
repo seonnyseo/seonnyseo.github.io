@@ -40,7 +40,6 @@ api = twitter.Api(consumer_key = keys.consumer_key,
                  access_token_secret = keys.access_token_secret)
 ```
 
-
 ```python
 from google.colab import files
 uploaded = files.upload()
@@ -71,6 +70,7 @@ Tweets ids and twitter user ids are in 'drug_safety_data.txt' file.
 
 
 ```python
+{% highlight html linenos %}
 import pandas as pd
 drugTweets = pd.read_csv('drug_safety_data.txt', delimiter = '\t', header = None, names = ['tweet_id', 'twitter_user_id', 'abuse'])
 drugTweets = drugTweets.drop_duplicates()
@@ -79,6 +79,7 @@ txts = []
 for tweet in drugTweets_text:
   txts.append(json.loads(json.dumps(tweet._json)))
 txts[0]
+{% endhighlight %}
 ```
 
 
