@@ -11,7 +11,7 @@ categories: Python Twitter API MachineLearning Text Classification
 Using Twitter API, we can collect information tweets includes user information, date, and tweets. For this, install and import Twitter API first.
 
 
-```
+```python
 !pip install python-twitter
 import twitter
 import json
@@ -32,32 +32,7 @@ import json
     Successfully installed python-twitter-3.5
 
 
-import keys.py file that contains twitter API user information to collect tweets from twitter
-
-
-```
-from google.colab import files
-src = list(files.upload().values())[0]
-open('mylib.py','wb').write(src)
-import mylib
-
-```
-
-
-
-     <input type="file" id="files-f0f0b2c9-0a24-419e-9ca3-52c9a54154e1" name="files[]" multiple disabled />
-     <output id="result-f0f0b2c9-0a24-419e-9ca3-52c9a54154e1">
-      Upload widget is only available when the cell has been executed in the
-      current browser session. Please rerun this cell to enable.
-      </output>
-      <script src="/nbextensions/google.colab/files.js"></script> 
-
-
-    Saving keys.py to keys.py
-
-
-
-```
+```python
 import keys
 api = twitter.Api(consumer_key = keys.consumer_key,
                  consumer_secret = keys.consumer_secret,
@@ -66,7 +41,7 @@ api = twitter.Api(consumer_key = keys.consumer_key,
 ```
 
 
-```
+```python
 from google.colab import files
 uploaded = files.upload()
 for fn in uploaded.keys():
@@ -95,14 +70,7 @@ Tweets ids and twitter user ids are in 'drug_safety_data.txt' file.
 3. Text in below shows how it is constructed 
 
 
-
-
-```
-
-```
-
-
-```
+```python
 import pandas as pd
 drugTweets = pd.read_csv('drug_safety_data.txt', delimiter = '\t', header = None, names = ['tweet_id', 'twitter_user_id', 'abuse'])
 drugTweets = drugTweets.drop_duplicates()
@@ -190,7 +158,7 @@ txts[0]
 From the json format, take out necessary information such as user_ids and texts
 
 
-```
+```python
 ids = []
 text = []
 for line in txts:
@@ -203,14 +171,10 @@ for line in txts:
 Tweets were written in the informal language in most cases, and included reserved words related to Twitter. To improve machine learning models performance, it is required to clean unnecessary text up to teach models clearly. 
 
 
-```
-
-```
-
 ####1.Remove Twitter reserved word
 
 
-```
+```python
 !pip install tweet-preprocessor
 import preprocessor as p
 ```
@@ -238,7 +202,7 @@ tweet-preprocessor library supports to remove these text.
 7.   Number
 
 
-```
+```python
 text_clean = []
 for line in text:
   text_clean.append(p.clean(line))
@@ -253,7 +217,7 @@ print('After  : {}'.format(text_clean[1]))
 After cleaning twitter reserved words, put this on the data frame that includes tweet_id, user_id and classfication label information.
 
 
-```
+```python
 tweets_w_text = pd.DataFrame(list(zip(ids, text_clean)), columns = ['tweet_id', 'text_text'])
 drugTweets_df = pd.merge(tweets_w_text, drugTweets, on = 'tweet_id', how = 'inner')
 ```
@@ -263,7 +227,7 @@ drugTweets_df = pd.merge(tweets_w_text, drugTweets, on = 'tweet_id', how = 'inne
 Besides removing Twitter words, we can remove stopwords that would not give important information and lowercase every text for avoiding counting same words several times. Also, we decide to apply stemming to reduce inflected words to their word stem.
 
 
-```
+```python
 import nltk
 import re
 nltk.download('stopwords')
@@ -278,7 +242,7 @@ from nltk.corpus import stopwords
 'fix_text' function includes removing stopwords, stemming, lowercasing and removing special characters. 
 
 
-```
+```python
 stop_words = set(stopwords.words("english"))
 snow = nltk.stem.SnowballStemmer('english')
 
@@ -290,7 +254,7 @@ def fix_Text(text):
 ```
 
 
-```
+```python
 num_resp = drugTweets_df["text_text"].size
 print("Before : {}".format(drugTweets_df['text_text'][2]))
 clean_text = []
@@ -307,7 +271,7 @@ print("After : {}".format(clean_text[2]))
 Also we found that twitter users use two words for one medicine such and also they type energy drink 'red bull' or 'redbull'. We thought it is reasonable to count these words together. Also, even we removed special characters, broken codes are still in text such as 'amp', 'lt,' and 'gt' because thoese are alphabet characters. So we made a function that change specific words, and remove the broken codes. 
 
 
-```
+```python
 word_list = {'quetiapin' : 'seroquel', 'oxycontin' : 'oxycodone', 'red bull' : 'redbull', 'amp':'', 'lt':'', 'gt':''}
 
 def change_word(text):
@@ -319,7 +283,7 @@ def change_word(text):
 ```
 
 
-```
+```python
 print("Before : {}".format(clean_text[5]))
 for i in range(num_resp):
   clean_text[i] = change_word(clean_text[i])
@@ -340,12 +304,11 @@ In order to classify tweets by machine learning models, we need to create a docu
 Using by CountVectorizer function, we can tokenize and count the frequency of words in tweets. After it, fit_transform module creats a Document-Term matrix. 
 
 
-```
+```python
 from sklearn.feature_extraction.text import CountVectorizer
 ```
 
-
-```
+```python
 tfVectorizer=CountVectorizer()
 tfdtm= tfVectorizer.fit_transform(clean_text)
 tfVectorizer.get_feature_names()[0:5]
@@ -365,7 +328,7 @@ The frequency of words does not tell us how the words important, because some no
 TfidfVectorizer module helps create tfidf matrix and set the minimum number of appearance. After creating the counting vector, convert it to data frame that we are going to use it for classification modeling.
 
 
-```
+```python
 from sklearn.feature_extraction.text import TfidfVectorizer
 ```
 
@@ -374,7 +337,7 @@ We then created 3 datasets where only the terms that appeared a minimum of 20, 3
 We evaluated the result of each frequency before, and 30 reveals the best performance. Thus, we decide to set minimum frequency of words ad 30 here. 
 
 
-```
+```python
 tfidfVectorizer=TfidfVectorizer(min_df=30)
 tfidfdtm = tfidfVectorizer.fit_transform(clean_text)
 tfidfVectorizer.get_feature_names()[0:5]
@@ -388,7 +351,7 @@ tfidfVectorizer.get_feature_names()[0:5]
 
 
 
-```
+```python
 tfidf_df = pd.DataFrame(tfidfdtm.toarray(), columns=tfidfVectorizer.get_feature_names())
 tfidf_df[:10]
 ```
@@ -1813,7 +1776,7 @@ drugTweets_df
 
 
 
-```
+```python
 tfidf_df['abused'] = drugTweets_df.abuse
 ```
 
@@ -1828,7 +1791,7 @@ Importing classification model packages.
 We will train KNN, SVM, Naive Bayes, and Decision tree models, and compare performance.
 
 
-```
+```python
 from sklearn.metrics import confusion_matrix
 from sklearn import metrics
 
@@ -1850,7 +1813,7 @@ Use a tf-idf matrix that we made above as dataset.
 
 
 
-```
+```python
 X = tfidf_df.drop('abused', axis = 1)
 y = tfidf_df.abused
 
@@ -1865,7 +1828,7 @@ Check how many abuse tweets do we have on our dataset.
 We can tell it is imbalanced dataset. 
 
 
-```
+```python
 tfidf_df.abused.value_counts()
 ```
 
@@ -1892,7 +1855,7 @@ We will apply 3 types of resampling and pick the best one.
 
 
 
-```
+```python
 from sklearn.utils import resample
 from collections import Counter
 from imblearn.over_sampling import RandomOverSampler
@@ -1904,7 +1867,7 @@ Oversampling  (X_train_up, y_train_up)
 
 
 
-```
+```python
 ros = RandomOverSampler(random_state = 123)
 X_train_up, y_train_up = ros.fit_resample(X_train, y_train)
 print(sorted(Counter(y_train_up).items()))
@@ -1916,7 +1879,7 @@ print(sorted(Counter(y_train_up).items()))
 SMOTE (X_train_SMOTE, y_train_SMOTE)
 
 
-```
+```python
 X_train_SMOTE, y_train_SMOTE = SMOTE().fit_resample(X_train, y_train)
 print(sorted(Counter(y_train_SMOTE).items()))
 ```
@@ -1927,7 +1890,7 @@ print(sorted(Counter(y_train_SMOTE).items()))
 Undersampling (X_train_under, y_train_under)
 
 
-```
+```python
 rus = RandomUnderSampler(random_state = 123)
 X_train_under, y_train_under = rus.fit_resample(X_train, y_train)
 print(sorted(Counter(y_train_under).items()))
@@ -1951,7 +1914,7 @@ Here is three functions that we made to work done easily.
 
 
 
-```
+```python
 def fit_models(X_train, y_train):
   
   knn = KNeighborsClassifier()
@@ -1970,7 +1933,7 @@ def fit_models(X_train, y_train):
 ```
 
 
-```
+```python
 def compare_models(classifiers, X, y):
 
   reports = []
@@ -1988,7 +1951,7 @@ def compare_models(classifiers, X, y):
 ```
 
 
-```
+```python
 def print_result(models, train_report, test_report):
   
   for model, train, test in zip(models, train_report, test_report):
@@ -2003,21 +1966,21 @@ def print_result(models, train_report, test_report):
 ```
 
 
-```
+```python
 models = ['KNN', 'SVM_Linear', 'DecisionTree','NaiveBayesian']
 ```
 
 Oversampling Result
 
 
-```
+```python
 _models_up = fit_models(X_train_up, y_train_up)
 train_report_up, train_matrix_up = compare_models(_models_up, X_train_up, y_train_up)
 test_report_up, test_matrix_up = compare_models(_models_up, X_test, y_test)
 ```
 
 
-```
+```python
 print_result(models, train_report_up, test_report_up)
 ```
 
@@ -2070,7 +2033,7 @@ print_result(models, train_report_up, test_report_up)
 Undersampling Result
 
 
-```
+```python
 _models_under = fit_models(X_train_under, y_train_under)
 train_report_under, train_matrix_under = compare_models(_models_under, X_train_under, y_train_under)
 test_report_under, test_matrix_under = compare_models(_models_under, X_test, y_test)
@@ -2127,7 +2090,7 @@ print_result(models, train_report_under, test_report_under)
 SMOTE Result
 
 
-```
+```python
 _models_SMOTE = fit_models(X_train_SMOTE, y_train_SMOTE)
 train_report_SMOTE, train_matrix_SMOTE = compare_models(_models_SMOTE, X_train_SMOTE, y_train_SMOTE)
 test_report_SMOTE, test_matrix_SMOTE = compare_models(_models_SMOTE, X_test, y_test)
@@ -2191,7 +2154,7 @@ To validate our model, we run cross validation and draw ROC curve.
 Since the data is imbalanced, we adopt stratifiedKFold function that keeps class weights on spliiting data for cross validation. Also, we use f1_scorer to compare models by f1_measure, not Accuracy. 
 
 
-```
+```python
 from sklearn.model_selection import cross_val_score, StratifiedKFold
 from sklearn.metrics import f1_score
 from sklearn.metrics import make_scorer
@@ -2208,7 +2171,7 @@ def cross_validation(estimators, folds, X_mat, Y_vec):
 ```
 
 
-```
+```python
 estimators = {
     'knn': KNeighborsClassifier(),
     'svm': SVC(kernel='linear', random_state=123, class_weight = 'balanced'),
@@ -2218,13 +2181,13 @@ estimators = {
 ```
 
 
-```
+```python
 X_train_oversampled = pd.DataFrame(X_train_SMOTE, columns = X_test.columns)
 oversampled_x = pd.concat([X_test, X_train_oversampled])
 ```
 
 
-```
+```python
 y_train_oversampled = pd.Series(y_train_SMOTE)
 oversampled_y = y_test.append(y_train_oversampled)
 ```
@@ -2232,7 +2195,7 @@ oversampled_y = y_test.append(y_train_oversampled)
 First, cross validation on oversampled data(Oversampled_training + test)
 
 
-```
+```python
 cross_validation(estimators, 10, oversampled_x, oversampled_y)
 ```
 
@@ -2245,7 +2208,7 @@ cross_validation(estimators, 10, oversampled_x, oversampled_y)
 Second, cross validation on Original data(training + test)
 
 
-```
+```python
 cross_validation(estimators, 10, X, y)
 ```
 
@@ -2256,12 +2219,12 @@ cross_validation(estimators, 10, X, y)
 
 
 
-```
+```python
 from sklearn.model_selection import GridSearchCV
 ```
 
 
-```
+```python
 def svm_param_selection(X, y, nfolds):
   parameter_candidates = [
       {'C':[1,10,100,1000], 'kernel':['linear']}
@@ -2275,12 +2238,12 @@ def svm_param_selection(X, y, nfolds):
 ```
 
 
-```
+```python
 _optimized = svm_param_selection(X_train_SMOTE, y_train_SMOTE, 10)
 ```
 
 
-```
+```python
 _optimized
 ```
 
@@ -2292,7 +2255,7 @@ _optimized
 
 
 
-```
+```python
 svm = SVC(kernel = 'linear', C = 1000, random_state = 123)
 svm.fit(X_train_SMOTE, y_train_SMOTE)
 _predicted = svm.predict(X = X_test)
@@ -2318,7 +2281,7 @@ We looked at the Area Under the Curve (AUC) on a ROC graph to future compare the
 
 
 
-```
+```python
 from sklearn.metrics import roc_curve, roc_auc_score
 import matplotlib.pyplot as plt
 import numpy as np
@@ -2326,7 +2289,7 @@ import numpy as np
 ```
 
 
-```
+```python
 classifiers = [KNeighborsClassifier(), 
                SVC(kernel='linear', random_state=123, probability=True),
                DecisionTreeClassifier(random_state=123),
@@ -2351,7 +2314,7 @@ for idx in range(len(names)):
 ```
 
 
-```
+```python
 print(result_table)
 ```
 
@@ -2365,7 +2328,7 @@ print(result_table)
 
 
 
-```
+```python
 fig = plt.figure(figsize=(8,6))
 
 for i in result_table.index:
