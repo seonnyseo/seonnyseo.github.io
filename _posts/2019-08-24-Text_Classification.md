@@ -114,10 +114,10 @@ for line in text:
 |----------|:-------------:|------:|
 | col 1 is |  left-aligned | $1600 |
 | col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+| col 3 is | right-aligned |    $1 
 
 Ex)
-|      | Text |
+|   a  | Text |
 |------|------|
 |Before|@Scribble_Dragon 50 mg Seroquel with my ‘normal’ 60 mg Lovan and 750 mcg Clonazepam.|
 |After |mg Seroquel with my ‘normal’ mg Lovan and mcg Clonazepam.|
