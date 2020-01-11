@@ -25,18 +25,11 @@ api = twitter.Api(consumer_key = 'Consumer-Key',
                  access_token_secret = 'Access-Token-Secret-Key')
 ```
 
-```python
-from google.colab import files
-uploaded = files.upload()
-for fn in uploaded.keys():
-  print('User uploaded file "{name}" with length {length} bytes'.format(
-  name = fn, length = len(uploaded[fn])))
-```
+|      Tweet ID     |      User ID   |Abused|
+|:-----------------:|:--------------:|:----:|
+|332694017852731392 |    187933275   |   1  |
+|332778502946426880 |     24377539   |   0  |
 
-
-Example)
-332694017852731392  187933275 1
-332778502946426880  24377539  0
 
 Tweets ids and twitter user ids are in 'drug_safety_data.txt' file. 
 
@@ -53,17 +46,19 @@ txts = []
 for tweet in drugTweets_text:
   txts.append(json.loads(json.dumps(tweet._json)))
 txts[0]
-
 ```
 
 I only need 'id' and 'text' from the status.
-EX)
+
+
 {
 ...
 'id': 333644914913079296'
 'text': 'i know for a FACT that alcohol does not deplete the seroquel levels in your blood, YET HERE WE ARE'
 ...
 }
+
+
 Full description of Twitter API response can be checked [here](https://developer.twitter.com/en/docs/accounts-and-users/create-manage-lists/api-referenc/get-lists-statuses)
 
 
@@ -108,8 +103,6 @@ text_clean = []
 for line in text:
   text_clean.append(p.clean(line))
 ```
-
-Ex)
 
 |      | Text |
 |------|------|
@@ -159,8 +152,6 @@ for i in range(0,num_resp):
 	clean_text.append(fix_Text(drugTweets_df["text_text"][i]))
 ```
 
-Ex)
-
 |      | Text |
 |------|------|
 |Before|SEVEN missed calls? get you're seroquel mg lowered. you're getting ridiculous|
@@ -186,8 +177,6 @@ def change_word(text):
 for i in range(num_resp):
   clean_text[i] = change_word(clean_text[i])
 ```
-
-Ex)
 
 |      | Text |
 |------|------|
@@ -303,8 +292,6 @@ Use a tf-idf matrix that we made above as dataset.
 2.   Split dataset as training and test set. (Training 80% / Test 20%)
 
 
-
-
 ```python
 X = tfidf_df.drop('abused', axis = 1)
 y = tfidf_df.abused
@@ -354,7 +341,6 @@ Oversampling  (X_train_up, y_train_up)
 ```python
 ros = RandomOverSampler(random_state = 123)
 X_train_up, y_train_up = ros.fit_resample(X_train, y_train)
-print(sorted(Counter(y_train_up).items()))
 ```
 
 
@@ -369,7 +355,6 @@ SMOTE (X_train_SMOTE, y_train_SMOTE)
 
 ```python
 X_train_SMOTE, y_train_SMOTE = SMOTE().fit_resample(X_train, y_train)
-print(sorted(Counter(y_train_SMOTE).items()))
 ```
 
 |Abused|Number of Tweets|
@@ -385,7 +370,6 @@ Undersampling (X_train_under, y_train_under)
 ```python
 rus = RandomUnderSampler(random_state = 123)
 X_train_under, y_train_under = rus.fit_resample(X_train, y_train)
-print(sorted(Counter(y_train_under).items()))
 ```
 
 |Abused|Number of Tweets|
@@ -479,50 +463,33 @@ test_report_up, test_matrix_up = compare_models(_models_up, X_test, y_test)
 print_result(models, train_report_up, test_report_up)
 ```
 
-    KNN_____________________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.96      0.71      0.82      2029                0       0.87      0.63      0.73       505
-               1       0.77      0.97      0.86      2029                1       0.19      0.48      0.27        90
-         
-        accuracy                           0.84      4058         accuracy                           0.61       595
-       macro avg       0.87      0.84      0.84      4058        macro avg       0.53      0.55      0.50       595
-    weighted avg       0.87      0.84      0.84      4058     weighted avg       0.77      0.61      0.66       595
-         
-    SVM_Linear______________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.72      0.68      0.70      2029                0       0.92      0.63      0.75       505
-               1       0.70      0.74      0.72      2029                1       0.25      0.69      0.36        90
-         
-        accuracy                           0.71      4058         accuracy                           0.64       595
-       macro avg       0.71      0.71      0.71      4058        macro avg       0.58      0.66      0.56       595
-    weighted avg       0.71      0.71      0.71      4058     weighted avg       0.82      0.64      0.69       595
-         
-    DecisionTree____________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.96      0.94      0.95      2029                0       0.87      0.83      0.85       505
-               1       0.95      0.96      0.95      2029                1       0.25      0.32      0.28        90
-         
-        accuracy                           0.95      4058         accuracy                           0.75       595
-       macro avg       0.95      0.95      0.95      4058        macro avg       0.56      0.57      0.56       595
-    weighted avg       0.95      0.95      0.95      4058     weighted avg       0.78      0.75      0.76       595
-         
-    NaiveBayesian___________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.78      0.48      0.59      2029                0       0.90      0.44      0.59       505
-               1       0.62      0.86      0.72      2029                1       0.18      0.71      0.29        90
-         
-        accuracy                           0.67      4058         accuracy                           0.48       595
-       macro avg       0.70      0.67      0.66      4058        macro avg       0.54      0.58      0.44       595
-    weighted avg       0.70      0.67      0.66      4058     weighted avg       0.79      0.48      0.55       595
-         
+KNN
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.82     | 0.96      | 0.71   | 0.84     | 0    | 0.73     | 0.87      | 0.63   | 0.61     |
+| 1     | 0.86     | 0.77      | 0.97   |          | 1    | 0.27     | 0.19      | 0.48   |          |
+
+SVM_Linear
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.70     | 0.72      | 0.68   | 0.71     | 0    | 0.75     | 0.92      | 0.63   | 0.64     |
+| 1     | 0.72     | 0.70      | 0.74   |          | 1    | 0.36     | 0.25      | 0.69   |          |
+
+Decision_Tree
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.95     | 0.96      | 0.94   | 0.95     | 0    | 0.85     | 0.87      | 0.83   | 0.75     |
+| 1     | 0.95     | 0.95      | 0.96   |          | 1    | 0.28     | 0.25      | 0.28   |          |
+
+NaiveBayesian
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.59     | 0.78      | 0.48   | 0.67     | 0    | 0.59     | 0.90      | 0.44   | 0.48     |
+| 1     | 0.72     | 0.62      | 0.86   |          | 1    | 0.29     | 0.18      | 0.71   |          |
 
 
 Undersampling Result
@@ -532,54 +499,35 @@ Undersampling Result
 _models_under = fit_models(X_train_under, y_train_under)
 train_report_under, train_matrix_under = compare_models(_models_under, X_train_under, y_train_under)
 test_report_under, test_matrix_under = compare_models(_models_under, X_test, y_test)
-
-print_result(models, train_report_under, test_report_under)
 ```
 
-    KNN_____________________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.72      0.70      0.71       351                0       0.89      0.51      0.65       505
-               1       0.71      0.73      0.72       351                1       0.19      0.66      0.30        90
-         
-        accuracy                           0.72       702         accuracy                           0.53       595
-       macro avg       0.72      0.72      0.72       702        macro avg       0.54      0.58      0.47       595
-    weighted avg       0.72      0.72      0.72       702     weighted avg       0.79      0.53      0.59       595
-         
-    SVM_Linear______________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.78      0.71      0.74       351                0       0.93      0.55      0.69       505
-               1       0.73      0.80      0.77       351                1       0.23      0.76      0.35        90
-         
-        accuracy                           0.75       702         accuracy                           0.58       595
-       macro avg       0.76      0.75      0.75       702        macro avg       0.58      0.65      0.52       595
-    weighted avg       0.76      0.75      0.75       702     weighted avg       0.82      0.58      0.64       595
-         
-    DecisionTree____________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.95      0.96      0.96       351                0       0.90      0.58      0.70       505
-               1       0.96      0.95      0.96       351                1       0.21      0.63      0.32        90
-         
-        accuracy                           0.96       702         accuracy                           0.59       595
-       macro avg       0.96      0.96      0.96       702        macro avg       0.55      0.61      0.51       595
-    weighted avg       0.96      0.96      0.96       702     weighted avg       0.79      0.59      0.65       595
-         
-    NaiveBayesian___________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.74      0.72      0.73       351                0       0.92      0.56      0.70       505
-               1       0.73      0.75      0.74       351                1       0.22      0.71      0.34        90
-         
-        accuracy                           0.74       702         accuracy                           0.58       595
-       macro avg       0.74      0.74      0.74       702        macro avg       0.57      0.64      0.52       595
-    weighted avg       0.74      0.74      0.74       702     weighted avg       0.81      0.58      0.64       595
-         
+KNN
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.71     | 0.72      | 0.70   | 0.72     | 0    | 0.65     | 0.89      | 0.51   | 0.53     |
+| 1     | 0.72     | 0.71      | 0.93   |          | 1    | 0.30     | 0.19      | 0.66   |          |
+
+SVM_Linear
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.74     | 0.78      | 0.71   | 0.75     | 0    | 0.69     | 0.92      | 0.55   | 0.58     |
+| 1     | 0.77     | 0.73      | 0.80   |          | 1    | 0.35     | 0.23      | 0.76   |          |
+
+Decision_Tree
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.96     | 0.95      | 0.96   | 0.96     | 0    | 0.70     | 0.90      | 0.58   | 0.59     |
+| 1     | 0.96     | 0.96      | 0.95   |          | 1    | 0.32     | 0.21      | 0.63   |          |
+
+NaiveBayesian
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.73     | 0.74      | 0.72   | 0.74     | 0    | 0.70     | 0.82      | 0.56   | 0.58     |
+| 1     | 0.74     | 0.73      | 0.75   |          | 1    | 0.34     | 0.22      | 0.71   |          |
 
 
 SMOTE Result
@@ -589,55 +537,35 @@ SMOTE Result
 _models_SMOTE = fit_models(X_train_SMOTE, y_train_SMOTE)
 train_report_SMOTE, train_matrix_SMOTE = compare_models(_models_SMOTE, X_train_SMOTE, y_train_SMOTE)
 test_report_SMOTE, test_matrix_SMOTE = compare_models(_models_SMOTE, X_test, y_test)
-
-
-print_result(models, train_report_SMOTE, test_report_SMOTE)
 ```
 
-    KNN_____________________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.95      0.67      0.78      2029                0       0.89      0.56      0.69       505
-               1       0.74      0.97      0.84      2029                1       0.20      0.60      0.30        90
-         
-        accuracy                           0.82      4058         accuracy                           0.57       595
-       macro avg       0.85      0.82      0.81      4058        macro avg       0.54      0.58      0.49       595
-    weighted avg       0.85      0.82      0.81      4058     weighted avg       0.78      0.57      0.63       595
-         
-    SVM_Linear______________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.77      0.69      0.73      2029                0       0.92      0.65      0.76       505
-               1       0.72      0.80      0.76      2029                1       0.26      0.68      0.37        90
-         
-        accuracy                           0.74      4058         accuracy                           0.66       595
-       macro avg       0.74      0.74      0.74      4058        macro avg       0.59      0.67      0.57       595
-    weighted avg       0.74      0.74      0.74      4058     weighted avg       0.82      0.66      0.70       595
-         
-    DecisionTree____________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.97      0.96      0.97      2029                0       0.87      0.85      0.86       505
-               1       0.96      0.97      0.97      2029                1       0.24      0.27      0.25        90
-         
-        accuracy                           0.97      4058         accuracy                           0.76       595
-       macro avg       0.97      0.97      0.97      4058        macro avg       0.55      0.56      0.56       595
-    weighted avg       0.97      0.97      0.97      4058     weighted avg       0.77      0.76      0.77       595
-         
-    NaiveBayesian___________________________________________________________________________________________________
-    train                                                           test
-                  precision    recall  f1-score   support                   precision    recall  f1-score   support
-         
-               0       0.81      0.56      0.66      2029                0       0.89      0.52      0.66       505
-               1       0.66      0.87      0.75      2029                1       0.19      0.64      0.30        90
-         
-        accuracy                           0.71      4058         accuracy                           0.54       595
-       macro avg       0.74      0.71      0.71      4058        macro avg       0.54      0.58      0.48       595
-    weighted avg       0.74      0.71      0.71      4058     weighted avg       0.79      0.54      0.61       595
-         
+KNN
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.78     | 0.95      | 0.67   | 0.82     | 0    | 0.69     | 0.89      | 0.56   | 0.57     |
+| 1     | 0.84     | 0.74      | 0.97   |          | 1    | 0.30     | 0.20      | 0.60   |          |
+
+SVM_Linear
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.73     | 0.77      | 0.69   | 0.74     | 0    | 0.76     | 0.92      | 0.65   | 0.66     |
+| 1     | 0.76     | 0.72      | 0.80   |          | 1    | 0.37     | 0.26      | 0.68   |          |
+
+Decision_Tree
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.97     | 0.97      | 0.96   | 0.97     | 0    | 0.86     | 0.87      | 0.85   | 0.76     |
+| 1     | 0.97     | 0.96      | 0.97   |          | 1    | 0.25     | 0.24      | 0.27   |          |
+
+NaiveBayesian
+
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|------|----------|-----------|--------|----------|
+| 0     | 0.66     | 0.81      | 0.56   | 0.71     | 0    | 0.66     | 0.89      | 0.52   | 0.54     |
+| 1     | 0.75     | 0.66      | 0.87   |          | 1    | 0.30     | 0.19      | 0.64   |          |
 
 
 ### 5.Validation
@@ -755,19 +683,13 @@ svm = SVC(kernel = 'linear', C = 1000, random_state = 123)
 svm.fit(X_train_SMOTE, y_train_SMOTE)
 _predicted = svm.predict(X = X_test)
 report = metrics.classification_report(y_test, _predicted)
-print(report)
 
 ```
 
-                  precision    recall  f1-score   support
-    
-               0       0.92      0.66      0.77       505
-               1       0.26      0.66      0.37        90
-    
-        accuracy                           0.66       595
-       macro avg       0.59      0.66      0.57       595
-    weighted avg       0.82      0.66      0.71       595
-    
+| Train | F1-Score | Precision | Recall | Accuracy |
+|-------|----------|-----------|--------|----------|
+| 0     | 0.77     | 0.92      | 0.66   | 0.66     |
+| 1     | 0.37     | 0.26      | 0.67   |          |
 
 
 #### 2.ROC curve
@@ -813,14 +735,12 @@ for idx in range(len(names)):
 print(result_table)
 ```
 
-      classifiers  ...       auc
-    0         KNN  ...  0.608702
-    1         SVM  ...  0.715259
-    2          DT  ...  0.565886
-    3   GausianNB  ...  0.601980
-    
-    [4 rows x 4 columns]
-
+|Classifiers   |AUC       |
+|:------------:|:--------:|
+| KNN          | 0.608702 |
+| SVM          | 0.715259 |
+| Decision Tree| 0.565886 |
+| Gausian NB   | 0.601980 |
 
 
 ```python
