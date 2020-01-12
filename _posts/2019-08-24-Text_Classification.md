@@ -503,14 +503,11 @@ test_report_under, test_matrix_under = compare_models(_models_under, X_test, y_t
 
 KNN
 
-| &nbsp;| F1-Score | Precision | Recall | Accuracy |
-|:-----:|:--------:|:---------:|:------:|:--------:|
-| Train | &nbsp;   | &nbsp;    |&nbsp;  | &nbsp;   |
-| 0     | 0.71     | 0.72      | 0.70   | 0.72     |
-| 1     | 0.72     | 0.71      | 0.93   |          |
-| Test  | &nbsp;   | &nbsp;    |&nbsp;  | &nbsp;   |
-|  0    | 0.65     | 0.89      | 0.51   | 0.53     |
-|  1    | 0.30     | 0.19      | 0.66   |          |
+| Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
+|:-----:|:--------:|:---------:|:------:|:--------:|:----:|:--------:|:---------:|:------:|:--------:|
+| 0     | 0.71     | 0.72      | 0.70   | 0.72     | 0    | 0.65     | 0.89      | 0.51   | 0.53     |
+| 1     | 0.72     | 0.71      | 0.93   |          | 1    | 0.30     | 0.19      | 0.66   |          |
+
 SVM_Linear
 
 | Train | F1-Score | Precision | Recall | Accuracy | Test | F1-Score | Precision | Recall | Accuracy |
