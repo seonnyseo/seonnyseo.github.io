@@ -5,14 +5,59 @@ date:   2019-12-10 23:59:00 +0100
 categories: Python Spotify API data retrieving
 ---
 
-Spotify is a digital music service that gives users access to millions of songs and has a huge client base all around the world. Driven by the interest in music and the data, I choose to explore more from the data of Spotify. My goal is to build a “Top 50” music dataset with different categories of songs, including 63 lists of different countries and areas as well as global. The data is created by the information of songs and artists and also based on a daily playlist from Spotify users. I would like our data to show the popularity of certain songs, artists and categories.
+Spotify is a digital music service that gives users access to millions of songs and has a huge client base all around the world. Driven by the interest in music and the data, I choose to explore more from the data of Spotify. My goal is to build a “Top 50” music dataset with different categories of songs, including 63 lists of different countries and areas as well as global. The data is created by the information of songs and artists and also based on a daily playlist from Spotify users. I would like my data to show the popularity of certain songs, artists and categories.
 
 Based on my dataset, there will be some potential users and applications for multiple purposes:
 
 ![Potential Users](https://i.imgur.com/KcajQ9U.jpg?1)
 
-1. Analyst - The dataset can be provided to analysts for data analysis
+1. Record company - The dataset could help record companies decide which singers have unlimited potential and are worth investing in. And for the current singers in their company, this dataset can help the company to decide what type of songs need to be made to open the target foreign market. 
 2. Events organizer - The dataset can be used as a reference for companies to know which songs their singers are going to choose on their world tour
-3. Record company - The dataset could help record companies decide which singers have unlimited potential and are worth investing in. And for the current singers in their company, this dataset can help the company to decide what type of songs need to be made to open the target foreign market. 
+3. Analyst - The dataset can be provided to analysts for data analysis
 4. Listener - The dataset allows listeners to quickly know about the most popular type of music and singers in other countries
+
+Spotify provides the data I use: information of songs, artists and albums, their available markets and popularity score, the number of followers of artists and so on. I use python and API to access the data, and the raw data I obtained is in json format. I clean the data to extract the information that is exactly I want and preprocess the data to finally build a easily readable data set.
+
+![Spotipy](https://i.imgur.com/MYpwORy.jpg)
+
+
+Spotify allows users to access their API and also supports neat documentation. Although Spotify only provides Web API officially, they archive the list of 3rd party libraries for integrating with the Spotify Web API using several programming languages and platforms. And I am going to connect Spotify through Spotipy library.
+
+[Spotify API Documentation](https://developer.spotify.com/documentation/web-api/)
+[Spotipy Documentation](https://spotipy.readthedocs.io/en/2.6.1/)
+
+Here is the features that I collect for each songs.
+![Features]([Imgur](https://i.imgur.com/bTDQcpM.jpg)
+
+24 Features
+
+* continent 
+* country rank
+* song
+* artist
+* album
+* release date
+* song id
+* artist id
+* album id
+* genre
+* acousticness
+* danceability
+* energy
+* instrumentalness
+* liveness
+* loudness
+* speechiness
+* valence
+* followers
+* artist popularity
+* song popularity
+* album popularity
+* created date
+
+The category of songs I get from the dataset is determined by the category of its artist. However, many artists release many different styles of songs and no single style label can represent the entire songs. So limitation occurs when I want to category our songs by its exact style, not the artist type. Spotify provides analyses of each song such as acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness and tempo. These data can help provide more information for analysts and record companies and I can use this information to help us obtain the artist type.
+
+
+Programming Challenge
+
 
