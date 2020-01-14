@@ -24,10 +24,11 @@ Spotify provides the data I use: information of songs, artists and albums, their
 Spotify allows users to access their API and also supports neat documentation. Although Spotify only provides Web API officially, they archive the list of 3rd party libraries for integrating with the Spotify Web API using several programming languages and platforms. And I am going to connect Spotify through Spotipy library.
 
 [Spotify API Documentation](https://developer.spotify.com/documentation/web-api/)
+
 [Spotipy Documentation](https://spotipy.readthedocs.io/en/2.6.1/)
 
 Here is the features that I collect for each songs.
-![Features]([Imgur](https://i.imgur.com/bTDQcpM.jpg)
+![Features](https://i.imgur.com/bTDQcpM.jpg)
 
 24 Features
 
@@ -60,4 +61,4 @@ The category of songs I get from the dataset is determined by the category of it
 
 Programming Challenge
 
-
+Although Spotipy supports lots of 
