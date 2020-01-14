@@ -5,7 +5,15 @@ date:   2019-12-10 23:59:00 +0100
 categories: Python Spotify API PANDAS BS4 data retrieving
 ---
 
-Spotify is a digital music service that gives users access to millions of songs and has a huge client base all around the world. Driven by the interest in music and the data, I choose to explore more from the data of Spotify. My goal is to build a “Top 50” music dataset with different categories of songs, including 63 lists of different countries and areas as well as global. The data is created by the information of songs and artists and also based on a daily playlist from Spotify users. I would like my data to show the popularity of certain songs, artists and categories.
+#### Introduction
+
+Spotify is a digital music service that gives users access to millions of songs and has a huge client base all around the world. Driven by the interest in music and the data, I choose to explore more from the data of Spotify. My goal is to build a “Top 50” music dataset with different categories of songs, including 62 lists of different countries and areas as well as global. The data is created by the information of songs and artists and also based on a daily playlist from Spotify users. I would like my data to show the popularity of certain songs, artists and categories.
+
+
+You can check out python code for this work on this [Jupyter Notebook](https://github.com/seonnyseo/spotify_top_charts_retrieve/blob/master/spotify_top_charts_retrieve.ipynb).
+
+
+#### Potential Users
 
 Based on my dataset, there will be some potential users and applications for multiple purposes:
 
@@ -18,14 +26,17 @@ Based on my dataset, there will be some potential users and applications for mul
 
 Spotify provides the data I use: information of songs, artists and albums, their available markets and popularity score, the number of followers of artists and so on. I use python and API to access the data, and the raw data I obtained is in json format. I clean the data to extract the information that is exactly I want and preprocess the data to finally build a easily readable data set.
 
-![Spotipy](https://i.imgur.com/MYpwORy.jpg)
+#### How to retrieve data from Spotify
 
+![Spotipy](https://i.imgur.com/MYpwORy.jpg)
 
 Spotify allows users to access their API and also supports neat documentation. Although Spotify only provides Web API officially, they archive the list of 3rd party libraries for integrating with the Spotify Web API using several programming languages and platforms. And I am going to connect Spotify through Spotipy library.
 
 [Spotify API Documentation](https://developer.spotify.com/documentation/web-api/)
 
 [Spotipy Documentation](https://spotipy.readthedocs.io/en/2.6.1/)
+
+#### What kind of information
 
 Here is the features that I collect for each songs.
 ![Features](https://i.imgur.com/bTDQcpM.jpg)
@@ -56,10 +67,12 @@ Here is the features that I collect for each songs.
 * album popularity
 * created date
 
+You can check out more explanation on the features from [readme](https://github.com/seonnyseo/spotify_top_charts_retrieve).
+
 The category of songs I get from the dataset is determined by the category of its artist. However, many artists release many different styles of songs and no single style label can represent the entire songs. So limitation occurs when I want to category our songs by its exact style, not the artist type. Spotify provides analyses of each song such as acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness and tempo. These data can help provide more information for analysts and record companies and I can use this information to help us obtain the artist type.
 
 
-Programming
+#### Programming
 
 [Where is Spotify Available](https://support.spotify.com/us/using_spotify/getting_started/full-list-of-territories-where-spotify-is-available/)
 
@@ -73,8 +86,23 @@ Although Spotipy supports lots of Spotify official API endpoint functions, it do
 
 ![Generator](https://i.imgur.com/2ioB86n.jpg)
 
-The code retrieves 
+The code retrieves every data based on using each IDs. (It can be a chart, a singer, a song, and an album) Spotify API provides several information on a single request and it only requires to modify the endpoint of the request. However, there is a limited number of information that users can gather at once and it depends on a type of information. (Mostly 50, only 20 for albums) So I made a generator to return IDs based on type and limit numbers. I expect it would save a usage on memory.
+
+
+#### Result
+
+![Result Table](https://i.imgur.com/McQ1NXJ.jpg)
+
+Final table looks like this. You can check out the whole result from the [jupyter notebook code](https://github.com/seonnyseo/spotify_top_charts_retrieve/blob/master/spotify_top_charts_retrieve.ipynb).
 
 
 
+#### Future Works and Limitataions
+
+1. Rank in data charts obtained from website is based on daily play counts in the country, which is not supported in API. I assume the rank as ascending order which is returned by API in its track information. (I have not seen an exception yet)
+
+2. I could not figure out the time that Spotify updates the charts yet and the code cannot check the charts have been updated. (Future Works)
+
+3. The code only creates a single daily charts csv file. Supporting aggretation ways such as reading a sheet and stack new data or creating new sheets everyday are 
+cadndidates to improve this work.
 
