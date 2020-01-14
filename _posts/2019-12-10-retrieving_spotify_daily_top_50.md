@@ -59,10 +59,22 @@ Here is the features that I collect for each songs.
 The category of songs I get from the dataset is determined by the category of its artist. However, many artists release many different styles of songs and no single style label can represent the entire songs. So limitation occurs when I want to category our songs by its exact style, not the artist type. Spotify provides analyses of each song such as acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness and tempo. These data can help provide more information for analysts and record companies and I can use this information to help us obtain the artist type.
 
 
-Programming Challenge
+Programming
+
+![Where is Spotify Available](https://support.spotify.com/us/using_spotify/getting_started/full-list-of-territories-where-spotify-is-available/)
+
+Top 50 Charts are updated daily by Spotify and my goal is to scrap the official charts as much as possible. I assume Spotify will add other countries charts in the future, so I think it is worth to make a way that covers it. My resolution is to grab a list of names of countries serviced from Spotify, and combine this with 'Top 50' keyword and search playlists that contain the combined word. Also, I have to filter one more time by chart creator ID, 'Spotify Official ID'. This work is in the code. 
+
 
 ![Temporarily Add](https://i.imgur.com/Om2qpDV.jpg)
 
 Although Spotipy supports lots of Spotify official API endpoint functions, it does not reflect retrieving playlists' tracks information function yet (Dec 2019). This is an essential information for this work and I have to find a solution. So I decide to write a custom function and add it into Spotipy object by module 'types' temporarily. Then, I am still available to exploit the advantages of using Spotipy.
+
+
+![Generator](https://i.imgur.com/2ioB86n.jpg)
+
+The code retrieves 
+
+
 
 
