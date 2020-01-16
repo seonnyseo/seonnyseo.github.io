@@ -7,7 +7,7 @@ categories: Python Twitter API MachineLearning Text Classification NLP DeepLearn
 
 This summer, I had a chance to work with one of the biggest pharmacist companies to evaluate the performance of machine learning models on detecting drug abuse in Tweets. Primarily, the company focused on assessing the BERT compared to other machine learning models. It was my first time to work on Natural Language Processing(NLP) and an excellent opportunity to come across new concepts.
 
-I will share the explanation and result of the project below, and you can check out the Python code that I worked from [my github page](https://github.com/seonnyseo/text_classification_on_social_media/blob/master/text_classification_on_social_media.ipynb).
+I will share the explanation and result of the project below, and you can check out the Python code from [my github page](https://github.com/seonnyseo/text_classification_on_social_media/blob/master/text_classification_on_social_media.ipynb).
 
 Before moving into the project, I would like to share what I have learned and the points where I should improve on in the future.
 
