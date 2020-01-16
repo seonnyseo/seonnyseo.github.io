@@ -11,12 +11,11 @@ I will share the explanation and result of the project below, and you can check 
 
 Before moving into the project, I would like to share what I have learned and the points where I should improve on in the future.
 
-1. NLP concepts (Lemmatization/Stemming, TF-IDF)
-2. Reviewed the Tweets before working on the methodology and found that several medications have two names. So I devised the Term replacement to unify the names. Once again, it reminded me of the value of looking at the data first.
-3. Reason to choose F-measure as a significant performance. In real business, I thought it was important to get the right answers right, but also to make fewer mistakes. In this regard, I thought f-measure with two balance would be suitable as a metric. I had thought about the metrics deeply and become familiar with it through the project.
-
-1. Insufficient backgrounds on Neural Network models and also BERT. I studied and experienced a bit of Deep Learning models, Keras, and BERT this time. It's been fun, and will put some effort into it.
-2. Overfitting on classification models. Although I cross-validated the models and run optimization, it seems the models were overfitted, especially in the case of the Decision Tree model. I will find room for improvement on this issue.
+- NLP concepts (Lemmatization/Stemming, TF-IDF)
+- Reviewed the Tweets before working on the methodology and found that several medications have two names. So I devised the Term replacement to unify the names. Once again, it reminded me of the value of looking at the data first.
+- Reason to choose F-measure as a significant performance. In real business, I thought it was important to get the right answers right, but also to make fewer mistakes. In this regard, I thought f-measure with two balance would be suitable as a metric. I had thought about the metrics deeply and become familiar with it through the project.
+- Insufficient backgrounds on Neural Network models and also BERT. I studied and experienced a bit of Deep Learning models, Keras, and BERT this time. It's been fun, and will put some effort into it.
+- Overfitting on classification models. Although I cross-validated the models and run optimization, it seems the models were overfitted, especially in the case of the Decision Tree model. I will find room for improvement on this issue.
 
  
 
