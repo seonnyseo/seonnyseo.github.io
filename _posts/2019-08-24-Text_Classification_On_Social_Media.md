@@ -85,7 +85,7 @@ Decision Tree does not require the assumption of linearity and is apt for this c
 
 Upon comparing the four classification model (Table 1 below, Appendix: Graph 1) SVM model with the minimum word frequency of 30, resampled with the SMOTE method has the highest F1-measure of 0.4, recall of 0.69, and the test accuracy of 0.67. Out of 98 “abuse” tweets, SVM correctly predicts 47 (48%) as “abuse” and out of 506 “not abuse” tweets, 287 (57%) are correctly predicted. 
 
-![Classification Models ROC Curve](https://imgur.com/lPfaMqJ)
+![Classification_Models_ROC_Curve](https://imgur.com/lPfaMqJ)
 
 #### Validation and Optimization
 
@@ -142,6 +142,6 @@ We performed a total of 144 combinations of parameters from Batch sizes of [8, 1
 
 ### Result
 
-![Result Comparison](https://imgur.com/kxjEQxK)
+![Result_Comparison](https://imgur.com/kxjEQxK)
 
 Google’s BERT model outperforms others (Appendix: Graph 4) in identifying users that are likely to abuse drugs based on Twitter posts, with a f1-measure of 0.485, recall of 0.576 and accuracy of 0.797. Our study indicates that social media--Twitter-- can be an important resource for detecting the prevalence of abuse of prescription medications, and that BERT can help us complete the task of identifying potential abuse-indicating user posts. 
