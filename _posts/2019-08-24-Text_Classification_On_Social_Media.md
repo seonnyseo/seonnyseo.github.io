@@ -2,7 +2,7 @@
 layout: post
 title:  "Text Classification on Social Media Text"
 date:   2019-08-24 23:59:00 +0100
-categories: Python Twitter API MachineLearning Text Classification
+categories: Python Twitter API MachineLearning Text Classification NLP DeepLearning BERT
 ---
 
 This summer, I had a chance to work with one of the biggest pharmacist companies to evaluate the performance of machine learning models on detecting drug abuse in Tweets. Primarily, the company focused on assessing the BERT compared to other machine learning models. It was my first time to work on Natural Language Processing(NLP) and an excellent opportunity to come across new concepts.
