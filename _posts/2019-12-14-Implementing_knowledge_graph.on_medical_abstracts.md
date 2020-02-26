@@ -91,6 +91,8 @@ Neo4j provides visualization of graphs that helps users to explore the database,
 
 ![Keyword to Abstracts](https://i.imgur.com/z4aCaBJ.jpg)
 
+Keyword Searching Concept
+
 ![Query](https://i.imgur.com/HMmKnrw.jpg)
 
 This query receives a keyword that user interests and displays a list of most relevant sentences in each abstract and ids of the abstracts that contain the keyword. The query only searches keywords that were extracted from the Keyword Extraction process above, not seeking the entire words in the abstracts. The most relevant sentences are chosen based on the frequency of terms shared in each abstract by TextRank Summarization process. For example, if we search the keyword ’NASH’ in the query, it returns 8 sentences and ids. We expect users save time to search and read articles at this point.
