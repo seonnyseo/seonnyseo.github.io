@@ -42,3 +42,66 @@ Annotating the abstracts is important for us to do further graph-based analysis.
 After the tags are extracted from the abstracts, it is helpful to look at keywords that frequently occur together. Often lot of times, it is possible to build relationships among two keywords by looking at their number of occurrences together. In this process, we create a function that runs through the keywords and counts the number of occurrences of each of the two keywords. For instance, in the sentence: Among genes related to milk fat synthesis and lipid droplet formation, only LPIN1 and dgat1 were upregulated by ad-nsrepb1, LPIN1, dfat, upregulate and ad-nsrepb1 occur together. It will then try to find these occurrences in other extracts.
 
 This process counts the frequency of occurrences and builds the occurs_with relationship. It helps in building the graph and to understand the phrases. The frequencies of these occurrences can also be used to figure out the relevant relationships among keywords.
+
+
+#### Keyword Extraction
+
+![Keyword Extraction](https://i.imgur.com/gHjF9SF.jpg)
+
+In this process, the words or phrases that best describe the abstract are identified and selected using the Term Frequency – Inverse Document Frequency (TF-IDF). So, in any particular abstract, the term that appears the most can be used as the simple summary of the context of the abstract. The tags that are the most relevant in the abstracts are stored in the node keyword. The relationship describes is created to link the annotated text and keywords.
+
+This process can play an important role in the simplification of the summary for abstracts. It saves time for researchers by narrowing down the abstracts by only looking at the relevant keywords. Further queries can be created as per the need of researchers.
+
+
+#### Concept Enrichment
+
+![Concept Enrichment](https://i.imgur.com/aHt3AE7.jpg)
+
+To build a knowledge graph, we also need to extract the hidden structure of our textual data and organize it so that a machine can process it. Sometimes, the data that we have is inadequate for making any kind of process. It also might not be the right set of data that is needed. Therefore, the enrichment process allows us to extend the knowledge, thereby introducing external sources. This process allows to gain more insight at the end of the process. We used external knowledge bases
+ConceptNet 5 and Microsoft Concept which offers the ability to enrich entities.
+
+For instance, the enrichment can discover that Fibrosis is a degenerative change, but that it is also a chromic complication. We can also create new connections into the graph between the documents. For example, if we take a document with Fibrosis and a document with, nephropathy there is nothing that the entity recognizes that will relate the two. However, by using external knowledge, we can create a new connection with Fibrosis, and nephropathy with Chronicle Complication as link between two. This will automatically enrich our graph, share connected data, and increase knowledge about your documents.
+
+
+#### TextRank Summarization
+
+![TextRank Summarization](https://i.imgur.com/FG0OzyZ.jpg)
+
+Similar approach to the keyword extraction can be employed to implement simple summarization of an abstract. A densely connected graph of sentences is created, with Sentence-Sentence relationships representing their similarity based on shared words (number of shared words vs sum of logarithms of number of words in a sentence). PageRank is then used as a centrality measure to rank the relative importance of sentences in the document.
+
+For a given annotate id we can get the list of sentences with their relevance ranking. In output below for annotatedText id 247474 sentence 7 and 3 are the most important with text rank .178 and .170 respectively.
+
+
+#### Cosine Similarity
+
+![Cosine Similarity](https://i.imgur.com/JZ1VSiT.jpg)
+
+Once tags are extracted from all the abstracts, it is possible to compute similarities between them using content-based similarity. During this process, each annotated text is described using the TF- IDF encoding format. TF-IDF. Text documents can be TF-IDF encoded as vectors in a multidimensional Euclidean space. The space dimensions correspond to the tags, previously extracted from the documents. The coordinates of a given document in each dimension are calculated as a product of two sub-measures: term frequency and inverse document frequency.
+
+Similarity between two or more abstracts can be calculated using Cosine similarity. Cosine similarity value range from 0 to 1. Abstracts having similarity cosine value near to 1 are most similar in meaning.
+
+
+#### Result and Insights
+
+With all of methodology above, we have tried to draw results from two perspectives. First, we want to exploit the methods that we worked on the methodology fully. It means we must find a way to weave the processes and draw insights. Second, we consider the processes in the researcher at the company's view and think how to take an advantage to a graph database. The graph database defines relationships between nodes and supports to search based on the relationships. We think this is an advantage of this database compared with structure database and programming languages.
+
+Neo4j provides visualization of graphs that helps users to explore the database, but it displays complicated visuals in most cases, not efficient to deliver insights and consumes lots of computer resources. In order to avoid this issue, we write two queries that receive keywords or abstract ids as an input and show text as a result. As a result, we realize that the graph database can be used like Wikipedia. Users can surf interesting abstracts by keywords or similar abstracts in our queries. We will discuss how the model works.
+
+##### Keyword to Abstracts
+
+![Keyword to Abstracts](https://i.imgur.com/z4aCaBJ.jpg)
+
+![Query](https://i.imgur.com/HMmKnrw.jpg)
+
+This query receives a keyword that user interests and displays a list of most relevant sentences in each abstract and ids of the abstracts that contain the keyword. The query only searches keywords that were extracted from the Keyword Extraction process above, not seeking the entire words in the abstracts. The most relevant sentences are chosen based on the frequency of terms shared in each abstract by TextRank Summarization process. For example, if we search the keyword ’NASH’ in the query, it returns 8 sentences and ids. We expect users save time to search and read articles at this point.
+
+
+##### Abstract to Abstracts
+
+![Abstract to Abstracgs](https://i.imgur.com/JBWWiC5.jpg)
+
+![Result Table](https://i.imgur.com/wwiqkYJ.jpg)
+
+The other query that we made is for pulling information from similar abstracts that are close to the user's interesting abstract. So, this query receives an abstract id as an input argument. The similarity value is calculated by the Cosine Similarity process, so each abstract has similarity value with every other abstract in the database. According to this reason, we limit the number of presenting abstracts. The reason that we devise this query is we think the researcher wants to surf similar abstracts to gather more information. Thus, the query helps shorten the time to search the abstracts.
+
+![Result Visual](https://i.imgur.com/OhSR2e4.jpg)
