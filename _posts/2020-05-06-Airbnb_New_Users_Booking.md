@@ -7,9 +7,17 @@ categories: DataAnalysis Kaggle Python Pandas Xgboost
 
 ### 1. Introduction
 
-
+```python
+import pandas as pd
+import numpy as np
+from matplotlib import pyplot as plt
+```
 ### 2. Data Analysis
-
+```python
+y = [i for i in range(1, 5)]
+x = [i for i in range(1, 5)]
+plt.bar(x, y)
+```
 
 #### 1. Pre-processing
 
