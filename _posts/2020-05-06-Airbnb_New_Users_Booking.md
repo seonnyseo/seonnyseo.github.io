@@ -45,7 +45,11 @@ Also splitting date information into the year, month, the day has been processed
 
 ##### 1. Acquisition
 
-Since the dataset only includes signed up users' information, it is not available to trace the visitors who only accessed and left the service. However, it provides the routes to the service 
+Since the dataset only includes signed up users' information, it is not available to trace the visitors who only accessed and left the service. However, it provides the routes to the service such as affiliate channels, providers and the first marketing the user interacted with before the signing up info. The first device used data is also provided.
+
+[Marketing Channel]
+
+
 
 ##### 2. Activation
 
