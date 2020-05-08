@@ -31,7 +31,7 @@ While the tracing system of the service was able to record robust information fo
 
 <img src="https://i.imgur.com/hli6TFU.png" width="1000">
 
-Fig. Age Raw Data Distribution
+->Fig. Age Raw Data Distribution<-
 
 It contains information on users who are older than 1000 years old, which does not make sense. However, most of the unreasonable data are distributed around late 1900. I assumed that the system asked to type the year users were born or it did not prevent mistakes properly before, so I subtracted the age from 2015, which is the year the dataset was released. Then a new graph shows a reasonable distribution. (This graph only displays between age 18 - 100.)
 
