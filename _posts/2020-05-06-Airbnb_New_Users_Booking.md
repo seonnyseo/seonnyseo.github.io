@@ -29,7 +29,7 @@ While the tracing system of the service was able to record robust information fo
 
 ![RAW Age graph](https://i.imgur.com/hli6TFU.png)
 
-<img src="https://i.imgur.com/hli6TFU.png" width="600">
+<img src="https://i.imgur.com/hli6TFU.png" width="1000">
 
 Fig. Age Raw Data Distribution
 
