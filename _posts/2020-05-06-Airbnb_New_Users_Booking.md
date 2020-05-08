@@ -27,7 +27,7 @@ I concentrated on building time-series graphs because of every row in both datas
 
 While the tracing system of the service was able to record robust information for most columns, lack of demographic data like age and gender happened since it requires the participation of the users. The age column is tricky here.
 
-![RAW Age graph](https://i.imgur.com/hli6TFU.png =700x)
+![RAW Age graph](https://i.imgur.com/hli6TFU.png)
 
 Fig. Age Raw Data Distribution
 
