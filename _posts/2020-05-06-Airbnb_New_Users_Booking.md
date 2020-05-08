@@ -27,7 +27,7 @@ I concentrated on building time-series graphs because of every row in both datas
 
 While the tracing system of the service was able to record robust information for most columns, lack of demographic data like age and gender happened since it requires the participation of the users. The age column is tricky here.
 
-[RAW Age graph]
+![RAW Age graph](https://i.imgur.com/hli6TFU.png)
 
 It contains information on users who are older than 1000 years old, which does not make sense. However, most of the unreasonable data are distributed around late 1900. I assumed that the system asked to type the year users were born or it did not prevent mistakes properly before, so I subtracted the age from 2015, which is the year the dataset was released. Then a new graph shows a reasonable distribution. (This graph only displays between age 18 - 100.)
 
@@ -45,15 +45,40 @@ Also splitting date information into the year, month, the day has been processed
 
 ##### 1. Acquisition
 
-Since the dataset only includes signed up users' information, it is not available to trace the visitors who only accessed and left the service. However, it provides the routes to the service such as affiliate channels, providers and the first marketing the user interacted with before the signing up info. The first device used data is also provided.
+Since the dataset only includes signed up users' information, it is not available to trace the visitors who only accessed and left the service. However, it provides the routes to the service such as affiliate channels, providers, and the first marketing the user interacted with before the signing up info. The first device used data is also provided.
 
 [Marketing Channel]
 
+From the marketing channel perspective, a direct connection is a top channel among marketing channels. This trend started in the middle of 2011 and the difference between direct and other channels has been increased constantly every year. And the second most popular channel is SEM-Branded until 2014/08. I can assume that most users already heard about Airbnb before they visit the service. (SEO 방문자가 많아지고 있음 -> paid 불필요 ?)
 
+[First Device Year]
+
+[Device by month]
+
+Let's look at the type of the first device. The number of desktop users increased rapidly between 2011-2013 while mobile users incremented gradually. On the contrary, first visiting through mobile devices exploded from 2013. If I break down this figure by month, the number of iPhone users overtook desktop users.
+
+[Mobile & Desktop]
+
+A graph drawn by groups into mobile and desktop reveals more dynamical changes from early 2014 and even more visits were connected through mobile devices later. 
+
+[Web browser]
+
+The increase in mobile application users is expected to help increase the number of mobile users. The graph above displays changes in the 8 widely used web browsers users. Airbnb does not describe the Unknown browser users in their explanation, so I guessed it marks the users flew in the service through mobile applications. It seems reasonable to speculate that the increasing trend of the two graphs is similar.
 
 ##### 2. Activation
 
+[Activation]
+
+Since every user has activated their account, it is not meaningful to discuss activation here. Thus I drew the changes the number of created accounts by year and month. Airbnb has grown up every year and it exploded in 2014. 
+
+[Activation Month]
+
+This graph shows that the number of created accounts had increased every year again and the number of new users is the highest in the summer. This could be an effect of summer vacation. 
+
+
 ##### 3. Retention
+
+
 
 ##### 4. Referral
 
