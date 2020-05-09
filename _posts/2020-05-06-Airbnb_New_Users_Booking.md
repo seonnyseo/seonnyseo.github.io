@@ -80,6 +80,9 @@ This graph shows that the number of created accounts had increased every year ag
 
 ##### 3. Retention
 
+[Sessions]
+
+[Sessions Expanded]
 
 
 ##### 4. Referral
