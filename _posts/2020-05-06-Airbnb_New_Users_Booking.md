@@ -84,6 +84,36 @@ This graph shows that the number of created accounts had increased every year ag
 
 [Sessions Expanded]
 
+For analyzing users' retention, I manipulated the session dataset. Originally it only contains (id, action, action_type, action_detail, device_type, secs_elapsed) columns. It traces the user's activity while staying in the service, but it does not provide timestamps for the actions. So I accumulated elapsed seconds by id, calculated days, and connected it with accounts created day. So the date of the activity can be estimated at an approximate value.
+
+[Retention Graph]
+
+Retention calculated the difference between the day the user created the account and the date he or she last accessed it. According to the graph, Top 20% of users accessed Airbnb after they created accounts, while bottom 20% users had not come back after 2.5 days. 
+
+[Retention Booked / Unbooked]
+
+There was also a difference between customers who used the service and customers who were not. The return rate of experienced customers tended to be slightly higher. (This graph reflects only users data from the  training dataset)
+
+| Top                   |          | Bottom                |          |
+|-----------------------|----------|-----------------------|----------|
+| Action                | Ratio    | Action                | Ratio    |
+|-----------------------|----------|-----------------------|----------|
+| show                  | 0.233809 | show                  | 0.164312 |
+| index                 | 0.10088  | header_userpic        | 0.08222  |
+| personalize           | 0.085812 | active                | 0.06828  |
+| search_results        | 0.085162 | index                 | 0.061296 |
+| ajax_refresh_subtotal | 0.060019 | create                | 0.059657 |
+| similar_listings      | 0.046329 | dashboard             | 0.053335 |
+| search                | 0.045925 | personalize           | 0.049304 |
+| update                | 0.040663 | search                | 0.048194 |
+| social_connections    | 0.033274 | update                | 0.037676 |
+| reviews               | 0.029425 | search_results        | 0.030413 |
+| active                | 0.015127 | authenticate          | 0.028108 |
+| edit                  | 0.011905 | notifications         | 0.026958 |
+| collections           | 0.011741 | ajax_refresh_subtotal | 0.024743 |
+| dashboard             | 0.01151  | reviews               | 0.022488 |
+
+
 
 ##### 4. Referral
 
