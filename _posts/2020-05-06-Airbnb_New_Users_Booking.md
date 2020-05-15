@@ -103,7 +103,7 @@ Retention calculated the difference between the day the user created the account
 
 The number of Top 20% of users is 27809, and the bottom 20% is 26342. As can be easily predicted, the difference in teh number of sessions between Top and Bottom is significant. Top 20% of users are tend to click more pages and try more actions.
 
-| Top                   |          | Bottom                |          |
+| Top 20%               |          | Bottom 20%            |          |
 |-----------------------|----------|-----------------------|----------|
 | Action                | Ratio    | Action                | Ratio    |
 |-----------------------|----------|-----------------------|----------|
@@ -124,8 +124,17 @@ The table above shows the 10 most common actions that the top and the bottom 20%
 
 There was also a difference between customers who used the service and customers who were not. The return rate of experienced customers tended to be slightly higher. (This graph reflects only users data from the  training dataset)
 
+![DAU](https://imgur.com/31iXUaD)
+
+From the session data, I was able to trace the number of daily users after manipulating and calcuating the seconds elapsed column. Because I only have both data from the demographic and sessions between 2014 January to September, the graph falls down after 2014 October.
+
+![MAU](https://imgur.com/X3VgXza)
+
+Conver to Daily Active Users to Monthly Active users graph. 
 
 ##### 4. Referral
+
+
 
 ##### 5. Revenue
 
