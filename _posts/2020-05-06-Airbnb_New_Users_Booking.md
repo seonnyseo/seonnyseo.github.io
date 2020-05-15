@@ -88,31 +88,41 @@ For analyzing users' retention, I manipulated the session dataset. Originally it
 
 ![Retention Graph](https://i.imgur.com/iCScIRi.png)
 
-Retention calculated the difference between the day the user created the account and the date he or she last accessed it. According to the graph, Top 20% of users accessed Airbnb after they created accounts, while bottom 20% users had not come back after 2.5 days. 
+Retention calculated the difference between the day the user created the account and the date he or she last accessed it. According to the graph, Top 20% of users retention day is longer than 27 days, while bottom 20% users had not come back after 2.5 days. 
 
-![Retention Booked / Unbooked](https://i.imgur.com/s56n98z.png)
+| Top 20%     |            | Bottom 20%  |          |
+|-------------|------------|-------------|----------|
+| count       | 27809      | count       | 26342    |
+| mean        | 177.942285 | mean        | 8.721547 |
+| std         | 160.384814 | std         | 7.953145 |
+| min         | 3          | min         | 0        |
+| 25%         | 80         | 25%         | 3        |
+| 50%         | 134        | 50%         | 6        |
+| 75%         | 222        | 75%         | 12       |
+| max         | 2715       | max         | 134      |
 
-There was also a difference between customers who used the service and customers who were not. The return rate of experienced customers tended to be slightly higher. (This graph reflects only users data from the  training dataset)
+The number of Top 20% of users is 27809, and the bottom 20% is 26342. As can be easily predicted, the difference in teh number of sessions between Top and Bottom is significant. Top 20% of users are tend to click more pages and try more actions.
 
 | Top                   |          | Bottom                |          |
 |-----------------------|----------|-----------------------|----------|
 | Action                | Ratio    | Action                | Ratio    |
 |-----------------------|----------|-----------------------|----------|
-| show                  | 0.233809 | show                  | 0.164312 |
-| index                 | 0.10088  | header_userpic        | 0.08222  |
-| personalize           | 0.085812 | active                | 0.06828  |
-| search_results        | 0.085162 | index                 | 0.061296 |
-| ajax_refresh_subtotal | 0.060019 | create                | 0.059657 |
-| similar_listings      | 0.046329 | dashboard             | 0.053335 |
-| search                | 0.045925 | personalize           | 0.049304 |
-| update                | 0.040663 | search                | 0.048194 |
-| social_connections    | 0.033274 | update                | 0.037676 |
-| reviews               | 0.029425 | search_results        | 0.030413 |
-| active                | 0.015127 | authenticate          | 0.028108 |
-| edit                  | 0.011905 | notifications         | 0.026958 |
-| collections           | 0.011741 | ajax_refresh_subtotal | 0.024743 |
-| dashboard             | 0.01151  | reviews               | 0.022488 |
+| show                  | 0.2336425| show                  | 0.1643121|
+| index                 | 0.0993014| header_userpic        | 0.0822204|
+| search_results        | 0.0848848| active                | 0.0682795|
+| personalize           | 0.0844791| index                 | 0.0612957|
+| ajax_refresh_subtotal | 0.0591886| create                | 0.0596574|
+| search                | 0.047732 | dashboard             | 0.0533352|
+| similar_listings      | 0.0455265| personalize           | 0.0493038|
+| update                | 0.0406442| search                | 0.0481939|
+| social_connections    | 0.0336528| update                | 0.037676 |
+| reviews               | 0.0299896| search_results        | 0.0304125|
 
+The table above shows the 10 most common actions that the top and the bottom 20% of users by retention days have done in the service. The second most top column in Topside, 'Index', includes viewing various results such as search results, listing, and wish list. Also, Top 20% of users do a lot of actions that are far from immediate reservations such as personalize, which is updating wish lists and social connections. On the other hand, one-time actions such as update user profile pictures, phone numbers, and creating accounts are the most common actions in Bottom 20% users' actions list. 
+
+![Retention Booked / Unbooked](https://i.imgur.com/s56n98z.png)
+
+There was also a difference between customers who used the service and customers who were not. The return rate of experienced customers tended to be slightly higher. (This graph reflects only users data from the  training dataset)
 
 
 ##### 4. Referral
