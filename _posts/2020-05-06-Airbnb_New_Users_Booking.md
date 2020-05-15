@@ -50,7 +50,7 @@ Since the dataset only includes signed up users' information, it is not availabl
 
 ![Marketing Channel](https://i.imgur.com/6i6UJrZ.png)
 
-From the marketing channel perspective, a direct connection is a top channel among marketing channels. This trend started in the middle of 2011 and the difference between direct and other channels has been increased constantly every year. And the second most popular channel is SEM-Branded until 2014/08. I can assume that most users already heard about Airbnb before they visit the service. (SEO 방문자가 많아지고 있음 -> paid 불필요 ?)
+From the marketing channel perspective, a direct connection is a top channel among marketing channels. This trend started in the middle of 2011 and the difference between direct and other channels has been increased constantly every year. And the second most popular channel is SEM-Branded until 2014/08. I can assume that most users already heard about Airbnb before they visit the service. 
 
 ![First Device Year](https://i.imgur.com/DCuC0uD.png)
 
@@ -124,11 +124,11 @@ The table above shows the 10 most common actions that the top and the bottom 20%
 
 There was also a difference between customers who used the service and customers who were not. The return rate of experienced customers tended to be slightly higher. (This graph reflects only users data from the  training dataset)
 
-![DAU](https://imgur.com/31iXUaD)
+![MAU](https://i.imgur.com/X3VgXza.png)
 
-From the session data, I was able to trace the number of daily users after manipulating and calcuating the seconds elapsed column. Because I only have both data from the demographic and sessions between 2014 January to September, the graph falls down after 2014 October.
+From the session data, I was able to trace the number of daily users after manipulating and calculating the seconds elapsed column. Because I only have both data from the demographic and sessions between 2014 January to September, the graph falls down after 2014 October.
 
-![MAU](https://imgur.com/X3VgXza)
+![DAU](https://i.imgur.com/31iXUaD.png)
 
 Conver to Daily Active Users to Monthly Active users graph. 
 
