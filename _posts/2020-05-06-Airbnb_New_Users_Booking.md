@@ -126,16 +126,26 @@ There was also a difference between customers who used the service and customers
 
 ![MAU](https://i.imgur.com/X3VgXza.png)
 
-From the session data, I was able to trace the number of daily users after manipulating and calculating the seconds elapsed column. Because I only have both data from the demographic and sessions between 2014 January to September, the graph falls down after 2014 October.
+From the session data, I was able to trace the number of daily users after manipulating and calculating the seconds elapsed column. Because I only have data from both of the demographic and sessions sets between 2014 January to September, the graph falls down after 2014 October.
 
-![DAU](https://i.imgur.com/31iXUaD.png)
+![DAU](https://i.imgur.com/Q2YKSSg.png)
 
 Conver to Daily Active Users to Monthly Active users graph. 
 
 ##### 4. Referral
 
-
-
+Airbnb does not provide specific information related to referral. However, I found name of actions that seems related to referral. So I extracted a description of the actions that contain 'referr' in the names. 
+| Referral Description  |
+|-----------------------|
+| count |          9076 |
+| mean  |          2.75 |
+| std   |          2.58 |
+| min   |          1.00 |
+| 25%   |          2.00 |
+| 50%   |          2.00 |
+| 75%   |          3.00 |
+| max   |         56.00 |
+| sum   |         14894 |
 ##### 5. Revenue
 
 
