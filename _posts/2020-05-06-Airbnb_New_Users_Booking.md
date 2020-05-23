@@ -134,10 +134,19 @@ Conver to Daily Active Users to Monthly Active users graph.
 
 ##### 4. Referral
 
-Airbnb does not provide specific information related to referral. However, I found name of actions that seems related to referral. So I extracted a description of the actions that contain 'referr' in the names. 
+Airbnb does not provide specific information related to referral. However, I found name of actions that seems related to referral. So I extracted a description of the actions that contain 'referr' in the names. ('ajax_get_referrals_amt' seems the action to check the number of referrals by the users, so the frequency of )
+
+- ajax_get_referrals_amt                  
+- ajax_referral_banner_experiment_type     
+- ajax_referral_banner_type                
+- referrer_status                          
+- signup_weibo_referral                      
+- weibo_signup_referral_finish             
+
 | Referral Description  |
-|-----------------------|
+|-------|---------------|
 | count |          9076 |
+| sum   |         25019 |
 | mean  |          2.75 |
 | std   |          2.58 |
 | min   |          1.00 |
@@ -145,7 +154,10 @@ Airbnb does not provide specific information related to referral. However, I fou
 | 50%   |          2.00 |
 | 75%   |          3.00 |
 | max   |         56.00 |
-| sum   |         14894 |
+
+The result reveals that 9076 users made 25019 actions related to the referral. The number of total users in dataset is 275547, so conversion rate from acquisition to referral in this dataset is around 3.2%.
+
+
 ##### 5. Revenue
 
 
