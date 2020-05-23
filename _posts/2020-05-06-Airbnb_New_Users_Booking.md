@@ -157,9 +157,20 @@ Airbnb does not provide specific information related to referral. However, I fou
 
 The result reveals that 9076 users made 25019 actions related to the referral. The number of total users in dataset is 275547, so conversion rate from acquisition to referral in this dataset is around 3.2%.
 
-
 ##### 5. Revenue
 
+For estimating the Revenue, I only use the training dataset because the testing set does not include booking information. Accroding to the training data, 88,908 users have history to book accormordations through Airbnb out of 213,451 total users. Nearly 42% of users have used the service. 
+
+It seems the conversion rate is abnormally high and I assumed that Airbnb provides filtered data for the competition since the purpose of it is to predict the users' first destination country. Anyway, I extracted revenue and converted users information as much as I can from the dataset.
+
+![First Destination](https://imgur.com/yeWp2FV.png)
+
+This graph presents the ratio by users' first destination. 'NDF' in here means 'No Destination Found', users had not made a reservation yet. 
+
+
+2. 성별로 확인해보면 아직 예약하지 않은 유저의 경우 성별을 특정해놓지 않았을 확률이 높음 -> 이건 예약하기 위해서 설정을 하는 것인지, 설정한 사람이 예약할 확률이 높은 지의 문제가 있을 수 있음. 아무튼 lock in 해두면 좋은 거 아닐까 ?
+3. 국가별
+4. 첫 예약일 - 가입일. 아무래도 필요할 때 가입하는 경향이 높은 듯. 그럼 유입하고 Lock In 할 수 있는 요인을 만들어서 Retention을 높이는 전략이 좋지 않을까 ?
 
 ### 3. Modeling
 
