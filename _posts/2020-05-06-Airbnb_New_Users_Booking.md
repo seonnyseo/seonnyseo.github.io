@@ -179,6 +179,10 @@ By the way, I can guess that leading users to provide their personal information
 
 This is a graph of the difference between the joining data and the first reservation date for users who have made a reservation before. As you can see, most of users made their first reservation with in a few days after they joined Airbnb. It may effects on referral and acquiring strategy.
 
+![Conversion Rates By Affiliate Channel](https://imgur.com/r1HDrk6.png)
+
+This table contains conversion rates by affiliate channels. As the plot that reveals the changes of new acquisition above, the top 3 most active acquisition channels' (Direct, SEO, SEM-Brand) conversion rates are also in the top here.
+
 ### 3. Modeling
 
 ### 4. Result
