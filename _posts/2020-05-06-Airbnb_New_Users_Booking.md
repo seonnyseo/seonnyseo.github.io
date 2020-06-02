@@ -175,9 +175,9 @@ According to the graph above, users who have not registered their sex less tend 
 
 By the way, I can guess that leading users to provide their personal information would keep them stay in the service and increase a possibility to use it in the furture.
 
+![Join to First Booking Dates](https://imgur.com/BLej2aQ.png)
 
-3. 국가별
-4. 첫 예약일 - 가입일. 아무래도 필요할 때 가입하는 경향이 높은 듯. 그럼 유입하고 Lock In 할 수 있는 요인을 만들어서 Retention을 높이는 전략이 좋지 않을까 ?
+This is a graph of the difference between the joining data and the first reservation date for users who have made a reservation before. As you can see, most of users made their first reservation with in a few days after they joined Airbnb. It may effects on referral and acquiring strategy.
 
 ### 3. Modeling
 
