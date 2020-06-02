@@ -165,10 +165,17 @@ It seems the conversion rate is abnormally high and I assumed that Airbnb provid
 
 ![First Destination](https://imgur.com/yeWp2FV.png)
 
-This graph presents the ratio by users' first destination. 'NDF' in here means 'No Destination Found', users had not made a reservation yet. 
+This graph presents the ratio by users' first destination. 'NDF' in here means 'No Destination Found', users had not made a reservation yet. Let's split this by gender again.
+
+![Destination By Gender](https://imgur.com/8esCMXj.png)
+
+According to the graph above, users who have not registered their sex less tend to have booked accomodation through Airbnb. I can assume two things. 
+- Users who provide more personal information are likely to make a reservation
+- Users tend to provide their information after making a reservation for hosts
+
+By the way, I can guess that leading users to provide their personal information would keep them stay in the service and increase a possibility to use it in the furture.
 
 
-2. 성별로 확인해보면 아직 예약하지 않은 유저의 경우 성별을 특정해놓지 않았을 확률이 높음 -> 이건 예약하기 위해서 설정을 하는 것인지, 설정한 사람이 예약할 확률이 높은 지의 문제가 있을 수 있음. 아무튼 lock in 해두면 좋은 거 아닐까 ?
 3. 국가별
 4. 첫 예약일 - 가입일. 아무래도 필요할 때 가입하는 경향이 높은 듯. 그럼 유입하고 Lock In 할 수 있는 요인을 만들어서 Retention을 높이는 전략이 좋지 않을까 ?
 
